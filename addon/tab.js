@@ -93,14 +93,16 @@ export default Em.Component.extend(WithConfigMixin, {
    * @private
    */
   selectByTabsParam: Em.on('init', Em.observer('tabs.selected-idx', function() {
-    var idx;
-    if ((this.get('tabs.selected') != null) === this) {
-      return;
-    }
-    idx = parseInt(this.get('tabs.selected-idx', 10));
-    if (idx === this.get('index')) {
-      return this.select();
-    }
+    Em.run.schedule('afterRender', () => {
+      var idx;
+      if ((this.get('tabs.selected') != null) === this) {
+        return;
+      }
+      idx = parseInt(this.get('tabs.selected-idx', 10));
+      if (idx === this.get('index')) {
+        return this.select();
+      }
+    })
   })),
 
   /**

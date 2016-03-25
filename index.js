@@ -2,5 +2,8 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-idx-tabs'
+  name: 'ember-idx-tabs',
+  isDevelopingAddon: function() {
+    return true;
+  }
 };

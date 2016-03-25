@@ -1,7 +1,7 @@
 //(c) 2014 Indexia, Inc.
 import Em from 'ember';
 import WithConfigMixin from 'ember-idx-utils/mixin/with-config';
-import StyleBindingsMixin from 'ember-idx-utils/mixin/style-bindings';
+import StyleBindingsMixin from 'ember-idx-tabs/mixin/style-bindings';
 
 var computed = Em.computed;
 
