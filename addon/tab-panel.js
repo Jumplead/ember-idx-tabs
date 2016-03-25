@@ -55,8 +55,10 @@ export default Em.Component.extend(WithConfigMixin, StyleBindingsMixin, {
   changeVisibility: Em.observer('selected', function() {
     return this.$().css('display', this.get('selected') ? "" : 'none');
   }),
-  register: Em.on('didInsertElement', function() {
-    return this.get('tabs').addTabPanel(this);
+  register: Em.on('init', function() {
+    Em.run.schedule('afterRender', () => {
+      return this.get('tabs').addTabPanel(this);
+    });
   }),
   unregister: Em.on('willDestroyElement', function() {
     return this.get('tabs').removeTabPanel(this);

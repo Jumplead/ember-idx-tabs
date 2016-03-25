@@ -62,8 +62,10 @@ export default Em.Component.extend(WithConfigMixin, {
    * @method register
    * @private
    */
-  register: on('didInsertElement', function() {
-    return this.get('tabs').setTabList(this);
+  register: on('init', function() {
+    Em.run.schedule('afterRender', () => {
+      return this.get('tabs').setTabList(this);
+    });
   }),
 
   /**

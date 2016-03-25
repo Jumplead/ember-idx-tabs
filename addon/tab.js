@@ -92,7 +92,7 @@ export default Em.Component.extend(WithConfigMixin, {
    * @method selectByTabsParam
    * @private
    */
-  selectByTabsParam: Em.on('didInsertElement', Em.observer('tabs.selected-idx', function() {
+  selectByTabsParam: Em.on('init', Em.observer('tabs.selected-idx', function() {
     var idx;
     if ((this.get('tabs.selected') != null) === this) {
       return;
@@ -109,8 +109,10 @@ export default Em.Component.extend(WithConfigMixin, {
    * @method register
    * @private
    */
-  register: Em.on('didInsertElement', function() {
-    return this.get('tabList').addTab(this);
+  register: Em.on('init', function() {
+    Em.run.schedule('afterRender', () => {
+      return this.get('tabList').addTab(this);
+    });
   }),
 
   /**
