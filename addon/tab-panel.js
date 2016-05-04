@@ -11,7 +11,7 @@ export default Em.Component.extend(WithConfigMixin, StyleBindingsMixin, {
     var _ref;
     return (_ref = this.get('config.tabs.tabPanelClasses')) != null ? _ref.join(" ") : void 0;
   }),
-  styleBindings: ['height'],
+  // styleBindings: ['height'],
   attributeBindings: ['selected'],
 
   /**
@@ -32,7 +32,7 @@ export default Em.Component.extend(WithConfigMixin, StyleBindingsMixin, {
   /**
    * A reference to the {{#crossLink "Tabs}}{{/crossLink}}'s panels property.
    *
-   * @property panels 
+   * @property panels
    * @type Array
    */
   panels: computed.alias('parentView.panels'),

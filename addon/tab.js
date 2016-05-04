@@ -20,9 +20,9 @@ export default Em.Component.extend(WithConfigMixin, {
    * @property attributeBindings
    * @type Array
    */
-  attributeBindings: ['active'],
+  //attributeBindings: ['active'],
   classNameBindings: ['styleClasses', 'selectedClass'],
-  
+
   styleClasses: computed(function() {
     var _ref;
     return (_ref = this.get('config.tabs.tabClasses')) != null ? _ref.join(" ") : void 0;
@@ -39,7 +39,7 @@ export default Em.Component.extend(WithConfigMixin, {
 
   /**
    * A reference to the {{#crossLink "Tabs"}}Tabs{{/crossLink}} instance.
-   * 
+   *
    * @property tabs
    * @type Tabs
    */
