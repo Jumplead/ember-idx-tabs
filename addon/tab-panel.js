@@ -44,10 +44,13 @@ export default Em.Component.extend(WithConfigMixin, StyleBindingsMixin, {
    * @type Tab
    */
   tab: Em.computed('panels.length', 'tabList.tab_instances.[]', function() {
-    var index, tabs;
-    index = this.get('panels').indexOf(this);
-    tabs = this.get('tabList.tab_instances');
-    return tabs && tabs.objectAt(index);
+    var panels = this.get('panels');
+    if (panels) {
+        var index = this.get('panels').indexOf(this);
+        var tabs = this.get('tabList.tab_instances');
+        return tabs && tabs.objectAt(index);
+    }
+    return false;
   }),
   selected: Em.computed('tab', 'tab.selected', function() {
     return this.get('tab.selected');
@@ -61,6 +64,7 @@ export default Em.Component.extend(WithConfigMixin, StyleBindingsMixin, {
     });
   }),
   unregister: Em.on('willDestroyElement', function() {
-    return this.get('tabs').removeTabPanel(this);
+    var tabs = this.get('tabs');
+    return (tabs) ? tabs.removeTabPanel(this) : null;
   })
 });
